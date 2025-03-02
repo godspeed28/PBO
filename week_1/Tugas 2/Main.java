@@ -39,6 +39,6 @@ public class Main {
         System.out.println("Luas Lingkaran : " + (int)luasLingkaran(jari_jari));
         System.out.println("Keliling Lingkaran : " + (int)kelilingLingkaran(jari_jari));
         System.out.println("Luas Kubus : " + luasKubus(panjangSisiKubus));
-        System.out.println("Keliling Kubus : " + kelilingKubus(5));
+        System.out.println("Keliling Kubus : " + kelilingKubus(panjangSisiKubus));
     }
 }
