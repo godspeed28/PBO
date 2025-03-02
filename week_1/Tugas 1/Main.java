@@ -17,7 +17,7 @@ public class Main {
     public static void main(String[] args){
         setNim("A11.2023.15193");
         setNama("Albert Kolin");
-        setAlamat("Nakula Raya No. 36", "Pendirikan Kidul", "Semarang Tengah", "Semarang", "Jawa Tengah", 5013);
+        setAlamat("Nakula Raya No. 36", "Pendirikan Kidul", "Semarang Tengah", "Semarang", "Jawa Tengah", 50131);
         System.out.println(setNoHP(6281236262924L));
         setEmail("albertog4taz28@gmail.com");
     }
