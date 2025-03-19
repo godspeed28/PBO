@@ -3,34 +3,34 @@ import java.util.Scanner;
 public class Mainquiz {
   public static void main(String[] args) {
     Scanner pertanyaan = new Scanner(System.in);
-    // Scanner jwb = new Scanner(System.in);
-    System.out.println("Enter username");
     Quiz quiz = new Quiz();
 
     System.out.println("Selamat datang di Kuis Pengetahuan Umum!");
     System.out.println("Jawab semua pertanyaan dengan memilih nomor");
 
-    for (int i = 0; i < quiz.getQuestionCount(); i++) {
-      quiz.displayQuestion(i);
-    }
+    String pil;
 
-    System.out.println("masukan pilihan pertanyaan: ");
-    int pilpertanyaan = pertanyaan.nextInt();
+    do {
 
-    System.out.println("masukan pilihan jawaban: ");
-    int piljwb = pertanyaan.nextInt();
+      for (int i = 0; i < quiz.getQuestionCount(); i++) {
+        quiz.displayQuestion(i);
+        System.out.print("masukan pilihan jawaban: ");
+        int piljwb = pertanyaan.nextInt();
+        pertanyaan.nextLine(); // Tambahkan ini untuk membersihkan newline
+        quiz.checkAnswer(i, piljwb);
+      }
 
-    quiz.checkAnswer(pilpertanyaan - 1, piljwb);
+      System.out.println("Score quiz : " + quiz.getScore());
 
-    System.err.println(pilpertanyaan);
+      System.out.print("Main lagi? y/n: ");
+      pil = pertanyaan.nextLine().trim();
 
-    // if(pil == 1){
-    // System.out.println("benar");
-    // }else{
-    // System.out.println("jawaban salah!");
-    // }
+      quiz.resetScore();
 
-    // System.out.println(quiz.getScore());
+    } while (!pil.equals("n"));
+
+    System.out.println("Terima kasih telah bermain!");
+    pertanyaan.close();
 
   }
 }
