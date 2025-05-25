@@ -69,12 +69,18 @@ public class Cellphone implements Phone {
     }
 
     public void listContact() {
-        System.out.println("Daftar Kontak:");
-        for (Contact contact : kontak) {
-            System.out.println("Nama: " + contact.getNama());
-            System.out.println("Nomor: " + contact.getNomor());
-            System.out.println();
+        int no = 0;
+
+        if (!kontak.isEmpty()) {
+             System.out.println("Daftar Kontak :");
+             for (Contact contact : kontak) {
+            System.out.print(++no + ". " + contact.getNama());
+            System.out.println(" | " + contact.getNomor());
         }
+        }else {
+            System.out.println("Daftar kontak kosong.");
+        }
+       
     }
 
     public int getBattery() {
@@ -93,9 +99,40 @@ public class Cellphone implements Phone {
         return this.balance;
     }
 
+    public boolean kontakAda(ArrayList<Contact> kontak, String nama, String nomor) {
+        for (Contact c : kontak) {
+            if (c.getNama().equalsIgnoreCase(nama) && c.getNomor().equals(nomor)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean kontakAda(ArrayList<Contact> kontak, String nama) {
+        for (Contact c : kontak) {
+            if (c.getNama().equalsIgnoreCase(nama)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void insertContact(String nama, String nomor) {
-        kontak.add(new Contact(nama, nomor));
-        System.out.println("Kontak dengan nama: " + nama + " dan nomor: " + nomor + " telah disimpan");
+        if (kontakAda(kontak, nama, nomor)) {
+            System.out.println("Kontak sudah ada!");
+        } else {
+            kontak.add(new Contact(nama, nomor));
+            System.out.println("Kontak dengan nama: " + nama + " dan nomor: " + nomor + " telah disimpan");
+        }
+    }
+
+    public void deleteContact(String nama) {
+        if (!kontakAda(kontak, nama)) {
+            System.out.println("Kontak tidak ada!");
+        } else {
+            kontak.remove(new Contact(nama, ""));
+            System.out.println("Kontak dengan nama: " + nama + " telah dihapus");
+        }
     }
 
     public void topUpBalance(int balance) {

@@ -17,4 +17,15 @@ public class Contact {
         return this.nomor;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null || getClass() != obj.getClass())
+            return false;
+
+        Contact contact = (Contact) obj;
+        return nama != null && nama.equalsIgnoreCase(contact.nama);
+    }
+
 }

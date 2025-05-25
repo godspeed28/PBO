@@ -27,4 +27,6 @@ public interface Phone {
     void getBatteryLevel();
 
     void insertContact(String nama, String nomor);
+
+    void deleteContact(String nama);
 }

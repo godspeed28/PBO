@@ -32,7 +32,8 @@ public class CellphoneMain {
                         "4. [@] Daftar Kontak\n" +
                         "5. [+] Tambah Kontak\n" +
                         "6. [-] Hapus Kontak\n" +
-                        "7. [X] Matikan Daya\n");
+                        "7. [i] Info Ponsel\n" +
+                        "8. [X] Matikan Daya\n");
     }
 
     public static void main(String[] args) {
@@ -41,9 +42,8 @@ public class CellphoneMain {
 
         int pil;
         int pulsa;
-        int paketData;
         String namaKontak;
-        int noKontak;
+        String noKontak;
 
         cp.powerOn();
 
@@ -103,14 +103,39 @@ public class CellphoneMain {
 
                 case 5:
                     // Tambah Kontak
+                    System.out.println("Tambah Kontak");
+                    System.out.println("=============");
+
+                    System.out.print("Masukan nama kontak : ");
+                    namaKontak = scanner.nextLine();
+
+                    System.out.print("Masukan no kontak : ");
+                    noKontak = scanner.nextLine();
+
+                    cp.insertContact(namaKontak, noKontak);
+
                     break;
 
                 case 6:
                     // Hapus Kontak
+                    System.out.println("Hapus Kontak");
+                    System.out.println("=============");
+
+                    System.out.print("Masukan nama kontak : ");
+                    namaKontak = scanner.nextLine();
+
+                    cp.deleteContact(namaKontak);
                     break;
 
                 case 7:
+                    // Phone info
+                    cp.phoneInfo();
+
+                    break;
+                case 8:
                     // Matikan Daya
+                    cp.powerOff();
+
                     break;
 
                 default:
@@ -118,15 +143,9 @@ public class CellphoneMain {
                     break;
             }
 
-        } while (pil != 7);
+        } while (pil != 8);
 
-        // cp.topUpBalance(10000);
-        // System.out.println("Sisa pulsa: " + cp.getBalance());
-        // cp.insertContact("Harry", "078123545");
-        // cp.insertContact("Diana", "081234567890");
-        // cp.listContact();
         // cp.getContact("Harry");
-        // cp.phoneInfo();
 
         // Smartphone sp = new Smartphone("Samsung", "M10");
         // sp.topUpBalance(50000);
