@@ -65,7 +65,13 @@ public class Bank {
 							for (int b = 0; b <= jumlahUang; b += 50000) {
 								for (int c = 0; c <= jumlahUang; c += 100000) {
 									int total = a + b + c;
+
 									if (total == jumlahUang) {
+										System.out.println("Kombinasi:");
+										System.out.println("20.000: " + a);
+										System.out.println("50.000: " + b);
+										System.out.println("100.000: " + c);
+										System.out.println("----------------------");
 										valid = true;
 										break;
 									}
@@ -80,7 +86,7 @@ public class Bank {
 
 					if (valid) {
 						try {
-							System.out.println("\nTarik Uang Rp" + tarikUang);
+							System.out.println("\nTarik Uang Rp" + tarikUang + " Berhasil!");
 							ca.tarikUang(jumlahUang);
 						} catch (InsufficientFundsException e) {
 							System.out.println(
