@@ -7,6 +7,7 @@ public class Cellphone implements Phone {
     String merk;
     String type;
     int balance;
+    int paketDataBalance;
     int pilPaketData;
     int batteryLevel;
     int status;
@@ -72,15 +73,15 @@ public class Cellphone implements Phone {
         int no = 0;
 
         if (!kontak.isEmpty()) {
-             System.out.println("Daftar Kontak :");
-             for (Contact contact : kontak) {
-            System.out.print(++no + ". " + contact.getNama());
-            System.out.println(" | " + contact.getNomor());
-        }
-        }else {
+            System.out.println("Daftar Kontak :");
+            for (Contact contact : kontak) {
+                System.out.print(++no + ". " + contact.getNama());
+                System.out.println(" | " + contact.getNomor());
+            }
+        } else {
             System.out.println("Daftar kontak kosong.");
         }
-       
+
     }
 
     public int getBattery() {
@@ -160,6 +161,7 @@ public class Cellphone implements Phone {
                 this.balance -= harga;
                 if (paketGb.containsKey(pilPaketData)) {
                     System.out.println("Pembelian paket " + paketGb.get(pilPaketData) + " GB berhasil!");
+                    this.paketDataBalance += paketGb.get(pilPaketData);
 
                 }
             } else {
@@ -170,6 +172,10 @@ public class Cellphone implements Phone {
             System.out.println("Pilihan paket tidak tersedia!");
         }
 
+    }
+
+    public int getBalancePaketData() {
+        return this.paketDataBalance;
     }
 
     public void phoneInfo() {

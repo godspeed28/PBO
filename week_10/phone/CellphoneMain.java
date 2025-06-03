@@ -28,12 +28,13 @@ public class CellphoneMain {
         System.out.print(
                 "1. [*] Cek Pulsa\n" +
                         "2. [$] Isi Pulsa\n" +
-                        "3. [#] Isi Paket Data\n" +
-                        "4. [@] Daftar Kontak\n" +
-                        "5. [+] Tambah Kontak\n" +
-                        "6. [-] Hapus Kontak\n" +
-                        "7. [i] Info Ponsel\n" +
-                        "8. [X] Matikan Daya\n");
+                        "3. [$] Cek Kuota Paket\n" +
+                        "4. [#] Isi Paket Data\n" +
+                        "5. [@] Daftar Kontak\n" +
+                        "6. [+] Tambah Kontak\n" +
+                        "7. [-] Hapus Kontak\n" +
+                        "8. [i] Info Ponsel\n" +
+                        "9. [X] Matikan Daya\n");
     }
 
     public static void main(String[] args) {
@@ -74,6 +75,14 @@ public class CellphoneMain {
                     break;
 
                 case 3:
+                    if (cp.getBalancePaketData() != 0) {
+                        System.out.println("Paket Data Aktif : " + cp.getBalancePaketData() + "GB");
+                    } else {
+                        System.out.println("Anda tidak memiliki kuota saat ini.");
+                    }
+                    break;
+
+                case 4:
                     // Isi Paket Data
 
                     displayBeliPaketData();
@@ -96,12 +105,12 @@ public class CellphoneMain {
 
                     break;
 
-                case 4:
+                case 5:
                     // Daftar Kontak
                     cp.listContact();
                     break;
 
-                case 5:
+                case 6:
                     // Tambah Kontak
                     System.out.println("Tambah Kontak");
                     System.out.println("=============");
@@ -116,7 +125,7 @@ public class CellphoneMain {
 
                     break;
 
-                case 6:
+                case 7:
                     // Hapus Kontak
                     System.out.println("Hapus Kontak");
                     System.out.println("=============");
@@ -127,12 +136,12 @@ public class CellphoneMain {
                     cp.deleteContact(namaKontak);
                     break;
 
-                case 7:
+                case 8:
                     // Phone info
                     cp.phoneInfo();
 
                     break;
-                case 8:
+                case 9:
                     // Matikan Daya
                     cp.powerOff();
 
@@ -143,7 +152,7 @@ public class CellphoneMain {
                     break;
             }
 
-        } while (pil != 8);
+        } while (pil != 9);
 
         // cp.getContact("Harry");
 

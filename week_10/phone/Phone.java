@@ -18,6 +18,8 @@ public interface Phone {
 
     int getBalance();
 
+    int getBalancePaketData();
+
     int getBattery();
 
     void getContact(String nama);
