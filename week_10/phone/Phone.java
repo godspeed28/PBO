@@ -18,7 +18,9 @@ public interface Phone {
 
     int getBalance();
 
-    int getBalancePaketData();
+    double getBalancePaketData();
+
+    void setBalancePaketData(double paketData);
 
     int getBattery();
 

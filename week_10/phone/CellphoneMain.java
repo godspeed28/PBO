@@ -34,7 +34,8 @@ public class CellphoneMain {
                         "6. [+] Tambah Kontak\n" +
                         "7. [-] Hapus Kontak\n" +
                         "8. [i] Info Ponsel\n" +
-                        "9. [X] Matikan Daya\n");
+                        "9. [!] Gunakan Paket Data\n" +
+                        "10. [X] Matikan Daya\n");
     }
 
     public static void main(String[] args) {
@@ -76,7 +77,7 @@ public class CellphoneMain {
 
                 case 3:
                     if (cp.getBalancePaketData() != 0) {
-                        System.out.println("Paket Data Aktif : " + cp.getBalancePaketData() + "GB");
+                        System.out.println("Paket Data Aktif : " + cp.getBalancePaketData() + " GB");
                     } else {
                         System.out.println("Anda tidak memiliki kuota saat ini.");
                     }
@@ -141,7 +142,12 @@ public class CellphoneMain {
                     cp.phoneInfo();
 
                     break;
+
                 case 9:
+                    gunakanData(scanner, cp);
+                    break;
+
+                case 10:
                     // Matikan Daya
                     cp.powerOff();
 
@@ -152,12 +158,52 @@ public class CellphoneMain {
                     break;
             }
 
-        } while (pil != 9);
+        } while (pil != 10);
+    }
 
-        // cp.getContact("Harry");
+    public static void gunakanData(Scanner input, Cellphone cp) {
+        System.out.println("Pilih aktivitas penggunaan data:");
+        System.out.println("1. YouTube (1.5 GB/jam)");
+        System.out.println("2. Instagram (0.7 GB/jam)");
+        System.out.println("3. Browsing (0.2 GB/jam)");
+        System.out.println("4. Spotify (0.15 GB/jam)");
+        System.out.println("5. WhatsApp (0.05 GB/jam)");
+        System.out.print("Aktivitas: ");
+        int aktivitas = input.nextInt();
 
-        // Smartphone sp = new Smartphone("Samsung", "M10");
-        // sp.topUpBalance(50000);
-        // sp.phoneInfo();
+        System.out.print("Berapa jam digunakan? ");
+        double jam = input.nextDouble();
+
+        double penggunaan = 0;
+        switch (aktivitas) {
+            case 1:
+                penggunaan = 1.5 * jam;
+                break;
+            case 2:
+                penggunaan = 0.7 * jam;
+                break;
+            case 3:
+                penggunaan = 0.2 * jam;
+                break;
+            case 4:
+                penggunaan = 0.15 * jam;
+                break;
+            case 5:
+                penggunaan = 0.05 * jam;
+                break;
+            default:
+                System.out.println("Aktivitas tidak valid.");
+                return;
+        }
+
+        double kuota = cp.getBalancePaketData();
+
+        if (penggunaan <= kuota) {
+            kuota -= penggunaan;
+            System.out.printf("Paket data terpakai %.2f GB. Sisa kuota: %.2f GB\n", penggunaan, kuota);
+            cp.setBalancePaketData(kuota);
+        } else {
+            System.out.println("Kuota tidak cukup!");
+        }
     }
 }

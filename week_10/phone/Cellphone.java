@@ -7,7 +7,7 @@ public class Cellphone implements Phone {
     String merk;
     String type;
     int balance;
-    int paketDataBalance;
+    double paketDataBalance;
     int pilPaketData;
     int batteryLevel;
     int status;
@@ -174,8 +174,12 @@ public class Cellphone implements Phone {
 
     }
 
-    public int getBalancePaketData() {
+    public double getBalancePaketData() {
         return this.paketDataBalance;
+    }
+
+    public void setBalancePaketData(double kuota) {
+        this.paketDataBalance = kuota;
     }
 
     public void phoneInfo() {
